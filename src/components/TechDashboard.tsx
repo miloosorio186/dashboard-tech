@@ -238,19 +238,22 @@ export default function TechDashboard() {
                         variants={pageVariants}
                         className="space-y-6"
                     >
-                        <div className="flex justify-between items-center">
-                            <div>
-                                <h2 className="text-2xl font-bold tracking-tight">System Analytics</h2>
-                                <p className="text-muted-foreground">Deep dive into platform metrics and performance.</p>
+                        <div className="flex justify-between items-end border-b-2 pb-6 border-foreground/10">
+                            <div className="space-y-1">
+                                <span className="text-xs font-mono font-bold text-primary">02 // DATA_VISUALIZATION</span>
+                                <h2 className="text-6xl font-black tracking-tighter uppercase leading-none">Analytics</h2>
+                                <p className="text-muted-foreground font-medium max-w-lg mt-2">DEEP DIVE INTO SYSTEM PERFORMANCE AND METRICS.</p>
                             </div>
-                            <Button variant="outline" onClick={() => handleExport('analytics')}><Download className="mr-2 h-4 w-4" /> Export Report</Button>
+                            <Button variant="outline" onClick={() => handleExport('analytics')} className="border-2 uppercase font-bold tracking-wider mb-2">
+                                <Download className="mr-2 h-4 w-4" /> Export Data
+                            </Button>
                         </div>
 
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                            <Card className="col-span-1 shadow-md">
+                            <Card className="col-span-1 shadow-none border-2">
                                 <CardHeader>
-                                    <CardTitle>Revenue Trends</CardTitle>
-                                    <CardDescription>Comparison of Regular vs Discounted Revenue (Last 10 Orders)</CardDescription>
+                                    <CardTitle className="uppercase tracking-wider font-bold">Revenue Trends</CardTitle>
+                                    <CardDescription className="font-mono text-xs">REGULAR_VS_DISCOUNTED // 10_ORDER_SAMPLE</CardDescription>
                                 </CardHeader>
                                 <CardContent className="h-[300px]">
                                     <ResponsiveContainer width="100%" height="100%">
@@ -348,12 +351,13 @@ export default function TechDashboard() {
                         variants={pageVariants}
                         className="space-y-6"
                     >
-                        <div className="flex justify-between items-center">
-                            <div>
-                                <h2 className="text-2xl font-bold tracking-tight">Agent Management</h2>
-                                <p className="text-muted-foreground">Manage authorized personnel and access levels.</p>
+                        <div className="flex items-end justify-between border-b-2 pb-6 border-foreground/10">
+                            <div className="flex flex-col gap-1">
+                                <span className="text-sm font-mono text-primary font-bold">03 // PERSONNEL</span>
+                                <h2 className="text-6xl font-black tracking-tighter uppercase leading-none">Agents</h2>
+                                <p className="text-muted-foreground font-medium max-w-lg mt-2">AUTHORIZED PERSONNEL AND ACCESS CONTROL.</p>
                             </div>
-                            <Button>
+                            <Button className="border-2 uppercase font-bold tracking-wider rounded-none">
                                 <Plus className="mr-2 h-4 w-4" /> Add Agent
                             </Button>
                         </div>
@@ -363,30 +367,30 @@ export default function TechDashboard() {
                                     key={user.id}
                                     variants={itemVariants}
                                 >
-                                    <Card className="hover:shadow-md transition-all h-full">
-                                        <CardHeader className="flex flex-row items-center gap-4 pb-2">
-                                            <div className="h-12 w-12 rounded-full overflow-hidden bg-secondary">
-                                                <img src={user.image} alt={user.firstName} className="h-full w-full object-cover" />
+                                    <Card className="hover:border-primary transition-all duration-300 shadow-none border-2 group h-full">
+                                        <CardHeader className="flex flex-row items-center gap-4 pb-2 border-b-2 bg-secondary/20">
+                                            <div className="h-12 w-12 overflow-hidden border-2 border-muted-foreground/20 group-hover:border-primary transition-colors">
+                                                <img src={user.image} alt={user.firstName} className="h-full w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
                                             </div>
                                             <div>
-                                                <CardTitle className="text-base">{user.firstName} {user.lastName}</CardTitle>
-                                                <CardDescription className="text-xs">{user.company.title}</CardDescription>
+                                                <CardTitle className="text-lg uppercase font-bold tracking-wide">{user.firstName} {user.lastName}</CardTitle>
+                                                <CardDescription className="text-xs font-mono uppercase text-primary font-bold">{user.company.title}</CardDescription>
                                             </div>
                                         </CardHeader>
-                                        <CardContent>
-                                            <div className="flex flex-col gap-2 text-sm text-muted-foreground mt-2">
-                                                <div className="flex justify-between border-b pb-2">
-                                                    <span>Department</span>
-                                                    <span className="font-medium text-foreground">{user.company.department}</span>
+                                        <CardContent className="pt-4">
+                                            <div className="flex flex-col gap-2 text-sm text-muted-foreground">
+                                                <div className="flex justify-between border-b border-dashed pb-2">
+                                                    <span className="font-mono text-xs uppercase">Department</span>
+                                                    <span className="font-bold text-foreground uppercase tracking-tight">{user.company.department}</span>
                                                 </div>
-                                                <div className="flex justify-between pt-1">
-                                                    <span>Status</span>
-                                                    <Badge variant="outline" className="text-green-600 bg-green-50 border-green-200">Active</Badge>
+                                                <div className="flex justify-between pt-1 items-center">
+                                                    <span className="font-mono text-xs uppercase">Status</span>
+                                                    <Badge variant="outline" className="text-[10px] h-5 px-1.5 border-green-500 rounded-none text-green-700 bg-green-50 uppercase tracking-widest font-bold">Active</Badge>
                                                 </div>
                                             </div>
                                         </CardContent>
-                                        <CardFooter>
-                                            <Button variant="outline" className="w-full text-xs h-8">View Profile</Button>
+                                        <CardFooter className="pt-0">
+                                            <Button variant="outline" className="w-full text-xs h-8 border-2 uppercase font-bold tracking-wider hover:bg-primary hover:text-primary-foreground rounded-none">View Profile</Button>
                                         </CardFooter>
                                     </Card>
                                 </motion.div>
@@ -404,37 +408,38 @@ export default function TechDashboard() {
                         variants={pageVariants}
                         className="space-y-6"
                     >
-                        <div className="flex justify-between items-center">
-                            <div>
-                                <h2 className="text-2xl font-bold tracking-tight">System Inventory</h2>
-                                <p className="text-muted-foreground">Hardware and software asset tracking.</p>
+                        <div className="flex items-end justify-between border-b-2 pb-6 border-foreground/10">
+                            <div className="flex flex-col gap-1">
+                                <span className="text-sm font-mono text-primary font-bold">04 // LOGISTICS</span>
+                                <h2 className="text-6xl font-black tracking-tighter uppercase leading-none">Inventory</h2>
+                                <p className="text-muted-foreground font-medium max-w-lg mt-2">HARDWARE AND SOFTWARE ASSET TRACKING.</p>
                             </div>
                             <div className="flex gap-2">
-                                <Button variant="outline"><Filter className="mr-2 h-4 w-4" /> Filter</Button>
-                                <Button onClick={() => handleExport('inventory')}><Download className="mr-2 h-4 w-4" /> Export Excel</Button>
+                                <Button variant="outline" className="border-2 uppercase font-bold text-xs tracking-wider rounded-none"><Filter className="mr-2 h-4 w-4" /> Filter</Button>
+                                <Button onClick={() => handleExport('inventory')} className="bg-primary text-primary-foreground border-2 border-primary uppercase font-bold text-xs tracking-wider rounded-none"><Download className="mr-2 h-4 w-4" /> Export Excel</Button>
                             </div>
                         </div>
-                        <Card>
+                        <Card className="border-2 shadow-none rounded-none">
                             <CardContent className="p-0">
-                                <div className="divide-y">
+                                <div className="divide-y-2">
                                     {filteredProducts.map((product, index) => (
                                         <motion.div
                                             key={product.id}
                                             variants={itemVariants}
-                                            className="flex items-center p-4 hover:bg-muted/50 transition-colors"
+                                            className="flex items-center p-4 hover:bg-muted/30 transition-colors group"
                                         >
-                                            <div className="h-16 w-16 rounded bg-secondary flex-shrink-0 overflow-hidden border">
-                                                <img src={product.thumbnail} alt={product.title} className="h-full w-full object-cover" />
+                                            <div className="h-16 w-16 bg-secondary flex-shrink-0 overflow-hidden border-2 group-hover:border-primary transition-colors">
+                                                <img src={product.thumbnail} alt={product.title} className="h-full w-full object-cover grayscale group-hover:grayscale-0 transition-all" />
                                             </div>
-                                            <div className="ml-4 flex-1">
-                                                <h3 className="font-medium">{product.title}</h3>
-                                                <p className="text-sm text-muted-foreground capitalize">{product.category}</p>
+                                            <div className="ml-6 flex-1">
+                                                <h3 className="font-bold uppercase tracking-wide text-lg">{product.title}</h3>
+                                                <p className="text-xs text-primary font-mono font-bold uppercase mt-1">{product.category}</p>
                                             </div>
-                                            <div className="text-right mr-6">
-                                                <div className="font-bold">${product.price}</div>
-                                                <div className="text-xs text-muted-foreground">{product.stock} in stock</div>
+                                            <div className="text-right mr-8">
+                                                <div className="font-black text-xl tracking-tight">${product.price}</div>
+                                                <div className="text-xs text-muted-foreground font-mono uppercase bg-secondary px-2 py-0.5 inline-block mt-1">STOCK: {product.stock}</div>
                                             </div>
-                                            <Button variant="ghost" size="sm">Edit</Button>
+                                            <Button variant="outline" size="sm" className="border-2 uppercase font-bold text-xs rounded-none">Edit</Button>
                                         </motion.div>
                                     ))}
                                 </div>
@@ -452,17 +457,18 @@ export default function TechDashboard() {
                         variants={pageVariants}
                         className="space-y-6"
                     >
-                        <div className="flex justify-between items-center">
-                            <div>
-                                <h2 className="text-2xl font-bold tracking-tight">Transaction Logs</h2>
-                                <p className="text-muted-foreground">Real-time purchase and acquisition data.</p>
+                        <div className="flex items-end justify-between border-b-2 pb-6 border-foreground/10">
+                            <div className="flex flex-col gap-1">
+                                <span className="text-sm font-mono text-primary font-bold">05 // LEDGER</span>
+                                <h2 className="text-6xl font-black tracking-tighter uppercase leading-none">Transactions</h2>
+                                <p className="text-muted-foreground font-medium max-w-lg mt-2">REAL-TIME PURCHASE AND ACQUISITION DATA STREAM.</p>
                             </div>
-                            <Button variant="outline" onClick={() => handleExport('transactions')}>
+                            <Button variant="outline" onClick={() => handleExport('transactions')} className="border-2 uppercase font-bold tracking-wider rounded-none">
                                 <Download className="mr-2 h-4 w-4" /> Export Log
                             </Button>
                         </div>
-                        <div className="rounded-md border">
-                            <div className="p-4 bg-muted/30 border-b font-medium grid grid-cols-12 text-sm text-muted-foreground">
+                        <div className="border-2 bg-card rounded-none">
+                            <div className="p-4 bg-secondary/50 border-b-2 font-mono font-bold uppercase text-xs tracking-wider grid grid-cols-12 text-muted-foreground">
                                 <div className="col-span-1">ID</div>
                                 <div className="col-span-3">User ID</div>
                                 <div className="col-span-2">Items</div>
@@ -470,25 +476,25 @@ export default function TechDashboard() {
                                 <div className="col-span-2">Discounted</div>
                                 <div className="col-span-2 text-right">Action</div>
                             </div>
-                            <div className="divide-y">
+                            <div className="divide-y-2">
                                 {filteredSales.map((cart, index) => (
                                     <motion.div
                                         key={cart.id}
                                         variants={itemVariants}
-                                        className="p-4 grid grid-cols-12 text-sm items-center hover:bg-muted/20"
+                                        className="p-4 grid grid-cols-12 text-sm items-center hover:bg-muted/20 font-mono transition-colors"
                                     >
-                                        <div className="col-span-1 font-mono">#{cart.id}</div>
-                                        <div className="col-span-3 flex items-center gap-2">
-                                            <div className="w-6 h-6 rounded-full bg-secondary flex items-center justify-center text-xs">
+                                        <div className="col-span-1 font-bold">#{cart.id}</div>
+                                        <div className="col-span-3 flex items-center gap-3">
+                                            <div className="w-6 h-6 border-2 border-foreground/20 flex items-center justify-center text-[10px] font-bold">
                                                 {cart.userId}
                                             </div>
-                                            <span className="text-muted-foreground">User {cart.userId}</span>
+                                            <span className="text-muted-foreground uppercase text-xs font-bold">User_{cart.userId}</span>
                                         </div>
-                                        <div className="col-span-2">{cart.totalProducts} items</div>
-                                        <div className="col-span-2 text-muted-foreground line-through">${cart.total}</div>
-                                        <div className="col-span-2 font-bold text-green-600">${cart.discountedTotal}</div>
+                                        <div className="col-span-2 font-bold">{cart.totalProducts} UNIT(S)</div>
+                                        <div className="col-span-2 text-muted-foreground line-through decoration-destructive decoration-2">${cart.total}</div>
+                                        <div className="col-span-2 font-black text-green-600 text-lg">${cart.discountedTotal}</div>
                                         <div className="col-span-2 text-right">
-                                            <Button variant="ghost" size="sm" className="h-8">Details</Button>
+                                            <Button variant="ghost" size="sm" className="h-8 uppercase font-bold text-xs hover:bg-primary hover:text-primary-foreground rounded-none">Details</Button>
                                         </div>
                                     </motion.div>
                                 ))}
@@ -506,33 +512,34 @@ export default function TechDashboard() {
                         variants={pageVariants}
                         className="space-y-6"
                     >
-                        <div className="flex justify-between items-center">
-                            <div>
-                                <h2 className="text-2xl font-bold tracking-tight">System Settings</h2>
-                                <p className="text-muted-foreground">Configure global preferences and system parameters.</p>
+                        <div className="flex items-end justify-between border-b-2 pb-6 border-foreground/10">
+                            <div className="flex flex-col gap-1">
+                                <span className="text-sm font-mono text-primary font-bold">06 // CONFIGURATION</span>
+                                <h2 className="text-6xl font-black tracking-tighter uppercase leading-none">Settings</h2>
+                                <p className="text-muted-foreground font-medium max-w-lg mt-2">GLOBAL SYSTEM PARAMETERS AND PREFERENCES.</p>
                             </div>
                         </div>
                         <div className="grid gap-6">
-                            <Card>
-                                <CardHeader>
-                                    <CardTitle>General Configuration</CardTitle>
-                                    <CardDescription>System-wide settings and preferences.</CardDescription>
+                            <Card className="border-2 shadow-none rounded-none">
+                                <CardHeader className="border-b-2 bg-secondary/10">
+                                    <CardTitle className="uppercase tracking-wider font-bold">General Configuration</CardTitle>
+                                    <CardDescription className="font-mono text-xs">SYSTEM_WIDE_PREFS</CardDescription>
                                 </CardHeader>
-                                <CardContent className="space-y-4">
+                                <CardContent className="space-y-6 pt-6">
                                     <div className="flex items-center justify-between">
-                                        <div className="space-y-0.5">
-                                            <div className="font-medium">Dark Mode</div>
-                                            <div className="text-sm text-muted-foreground">Enable system-wide dark appearance (Disabled by Policy)</div>
+                                        <div className="space-y-1">
+                                            <div className="font-bold uppercase tracking-wide text-sm">Dark Mode</div>
+                                            <div className="text-xs font-mono text-muted-foreground uppercase">ENABLE_DARK_APPEARANCE // DISABLED_BY_ADMIN</div>
                                         </div>
-                                        <Button variant="outline" disabled>Disabled</Button>
+                                        <Button variant="outline" disabled className="border-2 border-dashed uppercase font-bold text-xs opacity-50 rounded-none">Disabled</Button>
                                     </div>
-                                    <Separator />
+                                    <Separator className="bg-border" />
                                     <div className="flex items-center justify-between">
-                                        <div className="space-y-0.5">
-                                            <div className="font-medium">Data Refresh Rate</div>
-                                            <div className="text-sm text-muted-foreground">Interval for fetching new data.</div>
+                                        <div className="space-y-1">
+                                            <div className="font-bold uppercase tracking-wide text-sm">Data Refresh Rate</div>
+                                            <div className="text-xs font-mono text-muted-foreground uppercase">POLLING_INTERVAL_MS</div>
                                         </div>
-                                        <Button variant="outline">5 Minutes</Button>
+                                        <Button variant="outline" className="border-2 uppercase font-bold text-xs rounded-none">3000ms</Button>
                                     </div>
                                 </CardContent>
                             </Card>
@@ -549,24 +556,27 @@ export default function TechDashboard() {
                         variants={pageVariants}
                         className="space-y-6"
                     >
-                        <div className="flex justify-between items-center">
-                            <div>
-                                <h2 className="text-2xl font-bold tracking-tight">Notifications</h2>
-                                <p className="text-muted-foreground">System alerts and messages.</p>
+                        <div className="flex items-end justify-between border-b-2 pb-6 border-foreground/10">
+                            <div className="flex flex-col gap-1">
+                                <span className="text-sm font-mono text-primary font-bold">07 // ALERTS</span>
+                                <h2 className="text-6xl font-black tracking-tighter uppercase leading-none">Notifications</h2>
+                                <p className="text-muted-foreground font-medium max-w-lg mt-2">SYSTEM ALERTS AND CRITICAL MESSAGES.</p>
                             </div>
-                            <Button variant="outline">Mark all as read</Button>
+                            <Button variant="outline" className="border-2 uppercase font-bold tracking-wider rounded-none">Mark all as read</Button>
                         </div>
                         <div className="space-y-4">
                             {[1, 2, 3].map((i) => (
-                                <Card key={i}>
+                                <Card key={i} className="border-2 shadow-none rounded-none hover:bg-muted/10 transition-colors cursor-pointer group">
                                     <CardContent className="p-4 flex items-start gap-4">
-                                        <div className="h-8 w-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center flex-shrink-0">
-                                            <Bell className="h-4 w-4" />
+                                        <div className="h-10 w-10 border-2 border-primary bg-primary/10 text-primary flex items-center justify-center flex-shrink-0">
+                                            <Bell className="h-5 w-5" />
                                         </div>
-                                        <div className="space-y-1">
-                                            <p className="text-sm font-medium">System Update Available</p>
-                                            <p className="text-xs text-muted-foreground">A new patch v2.4.1 is ready for installation. Schedule a restart.</p>
-                                            <p className="text-[10px] text-muted-foreground pt-1">2 hours ago</p>
+                                        <div className="space-y-1 flex-1">
+                                            <div className="flex justify-between items-start">
+                                                <p className="text-sm font-bold uppercase tracking-wide group-hover:text-primary transition-colors">System Update Available</p>
+                                                <p className="text-[10px] bg-secondary px-1 py-0.5 font-mono font-bold uppercase text-muted-foreground">T-MINUS 2 HRS</p>
+                                            </div>
+                                            <p className="text-xs text-muted-foreground font-mono">PATCH_V2.4.1 READY_FOR_DEPLOYMENT // RESTART_REQUIRED</p>
                                         </div>
                                     </CardContent>
                                 </Card>
@@ -585,71 +595,84 @@ export default function TechDashboard() {
                         variants={pageVariants}
                         className="space-y-8"
                     >
-                        <div className="flex items-center justify-between">
-                            <div>
-                                <h2 className="text-3xl font-bold tracking-tight">Dashboard Overview</h2>
-                                <p className="text-muted-foreground mt-1">Real-time system metrics and platform analysis.</p>
+                        <div className="flex items-end justify-between border-b-2 pb-6 border-foreground/10">
+                            <div className="flex flex-col gap-1">
+                                <span className="text-sm font-mono text-primary font-bold">01 // PLATFORM</span>
+                                <h2 className="text-7xl font-black tracking-tighter uppercase text-foreground leading-none">
+                                    NEXUS<span className="text-primary">_OS</span>
+                                </h2>
+                                <p className="text-lg text-muted-foreground mt-2 font-medium max-w-lg">
+                                    SYSTEM METRICS AND REAL-TIME ANALYSIS MODULE.
+                                </p>
                             </div>
-                            <div className="flex items-center gap-2">
-                                <Button variant="outline" size="sm" className="hidden sm:flex" onClick={() => alert("System logs downloaded!")}>
+                            <div className="flex items-center gap-3">
+                                <div className="hidden lg:flex flex-col items-end mr-4">
+                                    <span className="text-xs font-mono text-muted-foreground">SYSTEM STATUS</span>
+                                    <span className="flex items-center gap-2 text-sm font-bold text-green-600">
+                                        <div className="h-2 w-2 bg-green-500 rounded-full animate-pulse" /> ONLINE
+                                    </span>
+                                </div>
+                                <Button variant="outline" size="sm" className="hidden sm:flex border-2" onClick={() => alert("System logs downloaded!")}>
                                     <Terminal className="mr-2 h-4 w-4" />
-                                    View Logs
+                                    LOGS
                                 </Button>
-                                <Button variant="outline"><Filter className="mr-2 h-4 w-4" /> Filter</Button>
-                                <Button onClick={() => handleExport('inventory')}><Download className="mr-2 h-4 w-4" /> Export Excel</Button>
+                                <Button variant="outline" className="border-2 uppercase font-bold text-xs tracking-wider"><Filter className="mr-2 h-4 w-4" /> Filter</Button>
+                                <Button className="bg-primary hover:bg-primary/90 text-primary-foreground border-2 border-primary uppercase font-bold text-xs tracking-wider" onClick={() => handleExport('inventory')}>
+                                    <Download className="mr-2 h-4 w-4" /> Export
+                                </Button>
                             </div>
                         </div>
 
-                        {/* KPI Stats Grid */}
+                        {/* KPI Stats Grid - Industrial Borders */}
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                            <Card className="hover:border-primary/50 transition-colors shadow-sm cursor-pointer" onClick={() => setActiveTab('users')}>
+                            <Card className="hover:border-primary transition-all duration-300 shadow-none border-2 cursor-pointer group" onClick={() => setActiveTab('users')}>
                                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                                    <CardTitle className="text-sm font-medium">Total Agents</CardTitle>
-                                    <Users className="h-4 w-4 text-muted-foreground" />
+                                    <CardTitle className="text-sm font-bold uppercase tracking-wider text-muted-foreground group-hover:text-primary transition-colors">Total Agents</CardTitle>
+                                    <Users className="h-4 w-4 text-muted-foreground group-hover:text-primary" />
                                 </CardHeader>
                                 <CardContent>
-                                    <div className="text-2xl font-bold">{users.length}</div>
-                                    <p className="text-xs text-muted-foreground mt-1 text-green-600 font-medium flex items-center">
-                                        +20.1% from last month
+                                    <div className="text-4xl font-black tracking-tight">{users.length}</div>
+                                    <p className="text-xs text-muted-foreground mt-1 font-mono flex items-center">
+                                        <span className="text-green-600 font-bold mr-1">▲ 20.1%</span> vs last month
                                     </p>
                                 </CardContent>
                             </Card>
 
-                            <Card className="hover:border-primary/50 transition-colors shadow-sm cursor-pointer" onClick={() => setActiveTab('inventory')}>
+                            <Card className="hover:border-primary transition-all duration-300 shadow-none border-2 cursor-pointer group" onClick={() => setActiveTab('inventory')}>
                                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                                    <CardTitle className="text-sm font-medium">Active Inventory</CardTitle>
-                                    <Package className="h-4 w-4 text-muted-foreground" />
+                                    <CardTitle className="text-sm font-bold uppercase tracking-wider text-muted-foreground group-hover:text-primary transition-colors">Inventory</CardTitle>
+                                    <Package className="h-4 w-4 text-muted-foreground group-hover:text-primary" />
                                 </CardHeader>
                                 <CardContent>
-                                    <div className="text-2xl font-bold">{products.length}</div>
-                                    <p className="text-xs text-muted-foreground mt-1 text-blue-600 font-medium">
-                                        +15 new items added
+                                    <div className="text-4xl font-black tracking-tight">{products.length}</div>
+                                    <p className="text-xs text-muted-foreground mt-1 font-mono">
+                                        <span className="text-blue-600 font-bold">+15</span> new items
                                     </p>
                                 </CardContent>
                             </Card>
 
-                            <Card className="hover:border-primary/50 transition-colors shadow-sm">
+                            <Card className="hover:border-primary transition-all duration-300 shadow-none border-2 group">
                                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                                    <CardTitle className="text-sm font-medium">System Load</CardTitle>
-                                    <Activity className="h-4 w-4 text-muted-foreground" />
+                                    <CardTitle className="text-sm font-bold uppercase tracking-wider text-muted-foreground group-hover:text-primary transition-colors">Sys Load</CardTitle>
+                                    <Activity className="h-4 w-4 text-muted-foreground group-hover:text-primary" />
                                 </CardHeader>
                                 <CardContent>
-                                    <div className="text-2xl font-bold">24%</div>
-                                    <div className="w-full bg-secondary h-1.5 mt-3 rounded-full overflow-hidden">
+                                    <div className="text-4xl font-black tracking-tight">24%</div>
+                                    <div className="w-full bg-secondary h-2 mt-3 overflow-hidden">
                                         <div className="bg-primary h-full w-[24%]"></div>
                                     </div>
                                 </CardContent>
                             </Card>
 
-                            <Card className="hover:border-primary/50 transition-colors shadow-sm cursor-pointer" onClick={() => setActiveTab('transactions')}>
+                            <Card className="hover:border-primary transition-all duration-300 shadow-none border-2 cursor-pointer group" onClick={() => setActiveTab('transactions')}>
                                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                                    <CardTitle className="text-sm font-medium">Daily Sales</CardTitle>
-                                    <ShoppingCart className="h-4 w-4 text-muted-foreground" />
+                                    <CardTitle className="text-sm font-bold uppercase tracking-wider text-muted-foreground group-hover:text-primary transition-colors">Revenue</CardTitle>
+                                    <ShoppingCart className="h-4 w-4 text-muted-foreground group-hover:text-primary" />
                                 </CardHeader>
                                 <CardContent>
-                                    <div className="text-2xl font-bold">${recentSales.reduce((acc, curr) => acc + curr.discountedTotal, 0).toFixed(2)}</div>
-                                    <p className="text-xs text-muted-foreground mt-1">
-                                        Across {recentSales.length} active carts
+                                    <div className="text-4xl font-black tracking-tight">${recentSales.reduce((acc, curr) => acc + curr.discountedTotal, 0).toFixed(0)}</div>
+                                    <p className="text-xs text-muted-foreground mt-1 font-mono">
+                                        {recentSales.length} ACTIVE ORDERS
                                     </p>
                                 </CardContent>
                             </Card>
@@ -657,34 +680,34 @@ export default function TechDashboard() {
 
                         {/* Recent Transactions & Highlights */}
                         <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
-                            <Card className="xl:col-span-2 shadow-sm">
-                                <CardHeader className="flex flex-row items-center justify-between">
-                                    <div>
-                                        <CardTitle>Recent Transactions</CardTitle>
-                                        <CardDescription>Live financial data stream from client carts.</CardDescription>
+                            <Card className="xl:col-span-2 shadow-none border-2">
+                                <CardHeader className="flex flex-row items-center justify-between border-b-2 p-6">
+                                    <div className="space-y-1">
+                                        <CardTitle className="uppercase tracking-wider font-bold">Recent Transactions</CardTitle>
+                                        <CardDescription className="font-mono text-xs">LIVE_DATA_STREAM // PORT_8080</CardDescription>
                                     </div>
-                                    <Button variant="ghost" size="sm" onClick={() => setActiveTab('transactions')}>View All</Button>
+                                    <Button variant="outline" size="sm" className="font-mono uppercase text-xs" onClick={() => setActiveTab('transactions')}>View All</Button>
                                 </CardHeader>
-                                <CardContent>
-                                    <div className="space-y-6">
+                                <CardContent className="p-0">
+                                    <div className="divide-y-2">
                                         {filteredSales.slice(0, 4).map((cart, index) => (
                                             <motion.div
                                                 key={cart.id}
                                                 variants={itemVariants}
-                                                className="flex items-center justify-between group hover:bg-muted/30 p-2 rounded-lg transition-colors -mx-2"
+                                                className="flex items-center justify-between group hover:bg-muted/30 p-4 transition-colors"
                                             >
                                                 <div className="flex items-center space-x-4">
-                                                    <div className="flex h-9 w-9 items-center justify-center rounded-full border bg-secondary text-xs font-bold text-muted-foreground">
+                                                    <div className="flex h-9 w-9 items-center justify-center border-2 border-primary/20 bg-secondary text-xs font-mono font-bold text-muted-foreground">
                                                         #{cart.id}
                                                     </div>
                                                     <div className="space-y-1">
-                                                        <p className="text-sm font-medium leading-none">Order Transaction</p>
-                                                        <p className="text-xs text-muted-foreground">User ID: {cart.userId} • {cart.totalProducts} items</p>
+                                                        <p className="text-sm font-bold uppercase leading-none">Order Transaction</p>
+                                                        <p className="text-xs text-muted-foreground font-mono">UID: {cart.userId} // ITEMS: {cart.totalProducts}</p>
                                                     </div>
                                                 </div>
                                                 <div className="text-right">
-                                                    <div className="font-mono font-bold">${cart.discountedTotal}</div>
-                                                    <Badge variant="outline" className="mt-1 text-[10px] h-5 px-1.5 border-green-200 text-green-700 bg-green-50">Completed</Badge>
+                                                    <div className="font-mono font-bold text-lg">${cart.discountedTotal}</div>
+                                                    <Badge variant="outline" className="mt-1 text-[10px] h-5 px-1.5 border-green-500 rounded-none text-green-700 bg-green-50 uppercase tracking-widest font-bold">Completed</Badge>
                                                 </div>
                                             </motion.div>
                                         ))}
@@ -692,32 +715,32 @@ export default function TechDashboard() {
                                 </CardContent>
                             </Card>
 
-                            <Card className="xl:col-span-1 shadow-sm h-full flex flex-col">
-                                <CardHeader>
-                                    <CardTitle>Active Agents</CardTitle>
-                                    <CardDescription>
-                                        {users.length} active users on the network currently.
+                            <Card className="xl:col-span-1 shadow-none border-2 h-full flex flex-col">
+                                <CardHeader className="border-b-2 p-6">
+                                    <CardTitle className="uppercase tracking-wider font-bold">Active Agents</CardTitle>
+                                    <CardDescription className="font-mono text-xs">
+                                        PERSONNEL_STATUS // {users.length} ONLINE
                                     </CardDescription>
                                 </CardHeader>
-                                <CardContent className="flex-1 overflow-auto pr-2 custom-scrollbar">
-                                    <div className="space-y-4">
+                                <CardContent className="flex-1 overflow-auto pr-2 custom-scrollbar p-0">
+                                    <div className="divide-y-2">
                                         {filteredUsers.map((user, index) => (
                                             <motion.div
                                                 key={user.id}
                                                 variants={itemVariants}
                                                 transition={{ delay: index * 0.1 }}
-                                                className="flex items-center justify-between space-x-4 border-b pb-4 last:border-0 last:pb-0 hover:bg-muted/30 p-2 rounded-md transition-colors -mx-2"
+                                                className="flex items-center justify-between space-x-4 hover:bg-muted/30 p-4 transition-colors"
                                             >
                                                 <div className="flex items-center space-x-4">
                                                     <div className="relative">
-                                                        <span className="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full border">
-                                                            <img className="aspect-square h-full w-full" src={user.image} alt={user.firstName} />
+                                                        <span className="relative flex h-10 w-10 shrink-0 overflow-hidden border-2 border-muted-foreground/20">
+                                                            <img className="aspect-square h-full w-full grayscale contrast-125" src={user.image} alt={user.firstName} />
                                                         </span>
-                                                        <span className="absolute bottom-0 right-0 block h-2.5 w-2.5 rounded-full ring-2 ring-background bg-green-500" />
+                                                        <span className="absolute -bottom-1 -right-1 block h-3 w-3 border-2 border-background bg-green-500" />
                                                     </div>
                                                     <div className="space-y-1">
-                                                        <p className="text-sm font-medium leading-none">{user.firstName} {user.lastName}</p>
-                                                        <p className="text-xs text-muted-foreground">{user.company.title}</p>
+                                                        <p className="text-sm font-bold uppercase leading-none">{user.firstName} {user.lastName}</p>
+                                                        <p className="text-xs text-muted-foreground font-mono">{user.company.title}</p>
                                                     </div>
                                                 </div>
                                             </motion.div>
@@ -729,7 +752,7 @@ export default function TechDashboard() {
                                 </CardFooter>
                             </Card>
                         </div>
-                    </motion.div>
+                    </motion.div >
                 );
         }
     };
